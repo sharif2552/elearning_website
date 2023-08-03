@@ -2,6 +2,13 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name
+
+
+class test(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
@@ -14,7 +21,7 @@ class Question(models.Model):
         ('option4', 'Option Four'),
     )
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(test, on_delete=models.CASCADE)
     question = models.CharField(max_length=300)
     option1 = models.CharField(max_length=100)
     option2 = models.CharField(max_length=100)

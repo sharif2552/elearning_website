@@ -32,10 +32,10 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     // Get the total number of questions from the input field
-    const totalQuestionsCount = parseInt("{{ total_questions }}");
+   
 
     // Set the duration in seconds (e.g., 10 minutes = 10 * 60 seconds)
-    const durationInSeconds = 10 * 60;
+    const durationInSeconds = totalQuestionsCount * 60;
 
     // Start the timer
     startTimer(durationInSeconds);
