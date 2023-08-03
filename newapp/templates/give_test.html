@@ -1,0 +1,62 @@
+
+{% extends 'base.html' %}
+{% block test %}
+<div class="timer-container"><button id="timer" type="button" class="btn btn-outline-danger" id="timer">00:00:00</button></div>
+
+<main class="container mt-5">
+
+    <section class="mt-5">
+        <h2 class="quizh2">Quiz Section</h2>
+        <form id="quizForm" method="POST">
+            {% csrf_token %}
+            <h2 id="total_questions">Total Number of questions:  {{ total_questions }} </h2>
+            {% for q in allquestions %}
+            <script>
+                var totalQuestionsCount = {{ total_questions }}
+            </script>
+                
+                <h5 class="quizh2">Question {{q.id}}: {{q.question}}</h5>
+                <div class="form-check" onclick="toggleCheckbox(this)">
+                    <button type="button" class="btn btn-outline-light" >                    
+                        <input class="form-check-input quizh2" type="radio" name="q{{ q.id }}" value="option1" id="q{{ q.id }}_option1">
+                        <label class="form-check-label quizh2" for="q{{ q.id }}_option1">{{q.option1}}</label>
+                    </button>
+                </div>
+                <div class="form-check">
+                    <button type="button" class="btn btn-outline-light">                    
+                        <input class="form-check-input quizh2" type="radio" name="q{{ q.id }}" value="option2" id="q{{ q.id }}_option2">
+                        <label class="form-check-label quizh2" for="q{{ q.id }}_option2">{{q.option2}}</label>
+                    </button>
+                </div>
+
+                <div class="form-check">
+                    <button type="button" class="btn btn-outline-light">                    
+                        <input class="form-check-input quizh2" type="radio" name="q{{ q.id }}" value="option3" id="q{{ q.id }}_option3">
+                        <label class="form-check-label quizh2" for="q{{ q.id }}_option3">{{q.option3}}</label>
+                    </button>
+                </div>
+
+                <div class="form-check">
+                    <button type="button" class="btn btn-outline-light">                    
+                        <input class="form-check-input quizh2" type="radio" name="q{{ q.id }}" value="option4" id="q{{ q.id }}_option4">
+                        <label class="form-check-label quizh2" for="q{{ q.id }}_option4">{{q.option4}}</label>
+                    </button>
+                </div>
+
+
+                <br>
+            
+
+                
+            
+            {% endfor %}
+
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </form>
+    </section>
+
+</main>
+
+
+
+{% endblock test %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block test %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Quiz Results</h2>
+                    <div class="result-item">
+                        <h5 class="mb-3">Total Questions:</h5>
+                        <p>{{ total_questions }}</p>
+                    </div>
+                    <div class="result-item">
+                        <h5 class="mb-3">Correct Answers:</h5>
+                        <p>{{ correct_answers }}</p>
+                    </div>
+                    <div class="result-item">
+                        <h5 class="mb-3">Not Answered:</h5>
+                        <p>{{ not_answered }}</p>
+                    </div>
+                    <div class="result-item">
+                        <h5 class="mb-3">Incorrect Answers:</h5>
+                        <p>{{ incorrect_answers }}</p>
+                    </div>
+                    <div class="result-item">
+                        <h5 class="mb-3">Score:</h5>
+                        <p>{{ score }}%</p>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock test %}

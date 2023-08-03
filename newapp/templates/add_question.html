@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block test %}
+
+<form method="post">
+    {% csrf_token %}
+<div class="form-floating mb-3 dark-bg text-light">
+        <select class="form-control dark-text" name="category" id="category">
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+        <label for="category">Choose a Category</label>
+</div>  
+
+
+<div class="form-floating mb-3 dark-bg text-light">
+    <input type="text" class="form-control dark-text" id="question" name = "question" >
+    <label for="question">Type the Question Here </label>
+</div>
+<div class="form-floating dark-bg text-light">
+    <input type="text" class="form-control dark-text" id="option1" name="option1" >
+    <label for="option1">Option1</label>
+</div>
+<div class="form-floating dark-bg text-light">
+    <input type="text" class="form-control dark-text" id="option2" name="option2" >
+    <label for="option2">Option2</label>
+</div>
+<div class="form-floating dark-bg text-light">
+    <input type="text" class="form-control dark-text" id="option3" name="option3" >
+    <label for="option3">Option3</label>
+</div>
+<div class="form-floating dark-bg text-light">
+    <input type="text" class="form-control dark-text" id="option4" name="option4">
+    <label for="option4">Option4</label>
+</div>
+<div class="form-floating dark-bg text-light">
+    <input type="text" class="form-control dark-text" id="correct_answer" name="correct_answer" >
+    <label for="correct_answer">Correct Answer</label>
+</div>
+
+<button  type="submit" class="btn btn-warning  shadow rounded-2 ">submit</button>
+<button  type="text"  name ="another_question" class="btn btn-warning  shadow rounded-2 ">Add another question </button>
+</form>
+{% endblock test %}

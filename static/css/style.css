@@ -1,0 +1,69 @@
+/* custom.css */
+.dark-bg .btn {
+    background-color: #007bff; /* Blue color for buttons in dark mode */
+    color: #ffffff; /* Light text color for buttons */
+  }
+  
+  .dark-bg .list-group-item {
+    background-color: #454d55; /* Darker background for list items */
+    color: #ffffff; /* Light text color for list items */
+  }
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #343a40;
+    padding-bottom: 60px; /* Dark background color for the entire page */
+     /* Light text color for better readability in dark mode */
+  }
+  
+  /* Override body background for elements with dark-bg class */
+  .dark-bg body {
+    background-color: #343a40; /* Use the same dark background color for elements with dark-bg class */
+  }
+  
+  /* Additional styles for dark mode */
+  .dark-bg .form-control {
+    background-color: #454d55; /* Darker background for form controls like input fields */
+    color: #ffffff; /* Light text color for form controls */
+  }
+  
+  #footer {
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 10px;
+
+    position : fixed;
+    bottom : 0;
+    width : 100%;
+    
+  }
+  
+  /* Add more styles for other elements as needed */
+  #h2{
+    text-decoration-color: #ffffff;
+    color: #f5f5f5;
+  }
+  .quizh2{
+    color: #ffffff;
+  }
+
+  /* CSS to float the timer at the top of the screen */
+.timer-container {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999; /* Adjust the z-index as needed */
+  background-color: #ffffff; /* Optional: Add a background color to the timer container */
+  padding: 5px; /* Optional: Add some padding to the timer container */
+}
+
+.quizh2{
+  margin-left: 10px ;
+  margin-right: 10px;
+}
