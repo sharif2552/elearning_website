@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block test %}
+
+<form method="POST">
+    {% csrf_token %}
+
+<div class="form-floating dark-bg text-light">
+    <input type="text" class="form-control dark-text" id="category" name="category" >
+    <label for="option1">Category</label>
+</div>
+
+
+<button name="submit"  type="submit" class="btn btn-warning  shadow rounded-2 ">submit</button>
+<button  type="text"  name ="another_category" class="btn btn-warning  shadow rounded-2 ">Add another category </button>
+</form>
+{% endblock test %}

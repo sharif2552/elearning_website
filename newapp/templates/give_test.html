@@ -17,27 +17,27 @@
                 
                 <h5 class="quizh2">Question {{q.question_number}}: {{q.question}}</h5>
                 <div class="form-check" onclick="toggleCheckbox(this)">
-                    <button type="button" class="btn btn-outline-light" >                    
+                    <button type="button" class="btn btn-outline-light quizh1" >                    
                         <input class="form-check-input quizh2" type="radio" name="q{{ q.id }}" value="option1" id="q{{ q.id }}_option1">
                         <label class="form-check-label quizh2" for="q{{ q.id }}_option1">{{q.option1}}</label>
                     </button>
                 </div>
                 <div class="form-check">
-                    <button type="button" class="btn btn-outline-light">                    
+                    <button type="button" class="btn btn-outline-light quizh1">                    
                         <input class="form-check-input quizh2" type="radio" name="q{{ q.id }}" value="option2" id="q{{ q.id }}_option2">
                         <label class="form-check-label quizh2" for="q{{ q.id }}_option2">{{q.option2}}</label>
                     </button>
                 </div>
 
                 <div class="form-check">
-                    <button type="button" class="btn btn-outline-light">                    
+                    <button type="button" class="btn btn-outline-light quizh1">                    
                         <input class="form-check-input quizh2" type="radio" name="q{{ q.id }}" value="option3" id="q{{ q.id }}_option3">
                         <label class="form-check-label quizh2" for="q{{ q.id }}_option3">{{q.option3}}</label>
                     </button>
                 </div>
 
-                <div class="form-check">
-                    <button type="button" class="btn btn-outline-light">                    
+                <div class="form-check ">
+                    <button type="button" class="btn btn-outline-light quizh1">                    
                         <input class="form-check-input quizh2" type="radio" name="q{{ q.id }}" value="option4" id="q{{ q.id }}_option4">
                         <label class="form-check-label quizh2" for="q{{ q.id }}_option4">{{q.option4}}</label>
                     </button>

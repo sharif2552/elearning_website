@@ -51,6 +51,10 @@ body {
   .quizh2{
     color: #ffffff;
   }
+  .quizh1:hover{
+    background-color: #aaaaa1;
+    color: white;
+  }
 
   /* CSS to float the timer at the top of the screen */
 .timer-container {
@@ -66,4 +70,7 @@ body {
 .quizh2{
   margin-left: 10px ;
   margin-right: 10px;
+}
+#total_questions{
+  color :#f4f43d;
 }

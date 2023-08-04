@@ -2,15 +2,17 @@
 
 {% block test %}
 
-<form method="post">
+<form method="POST">
     {% csrf_token %}
 <div class="form-floating mb-3 dark-bg text-light">
-        <select class="form-control dark-text" name="category" id="category">
+        <select class="form-control dark-text" name="category" id="category" arial-lebel="Select Category">
+            <option value="" disabled selected>Select an option</option>
+            
             {% for category in categories %}
                 <option value="{{ category.id }}">{{ category.name }}</option>
             {% endfor %}
         </select>
-        <label for="category">Choose a Category</label>
+        <label for="category">Choose a Topic</label>
 </div>  
 
 
@@ -35,11 +37,18 @@
     <label for="option4">Option4</label>
 </div>
 <div class="form-floating dark-bg text-light">
-    <input type="text" class="form-control dark-text" id="correct_answer" name="correct_answer" >
+    <select class="form-control dark-text" id="correct_answer" name="correct_answer">
+        <option value="" disabled selected>Choose The Answer</option>
+        <option value="option1">Option One</option>
+        <option value="option2">Option Two</option>
+        <option value="option3">Option Three</option>
+        <option value="option4">Option Four</option>
+    </select>
     <label for="correct_answer">Correct Answer</label>
 </div>
 
-<button  type="submit" class="btn btn-warning  shadow rounded-2 ">submit</button>
+
+<button  type="submit" class="btn btn-warning  shadow rounded-2" name="submit">submit</button>
 <button  type="text"  name ="another_question" class="btn btn-warning  shadow rounded-2 ">Add another question </button>
 </form>
 {% endblock test %}
