@@ -4,16 +4,17 @@
 {% block test %}
 <br>
 <div class="container mt-4">
-    <h2>Add New Test</h2>
+    <h2 class="text">Add New Test</h2>
     <form method="POST">
         {% csrf_token %}
         <div class="form-group">
-            <label for="test_name">Test Name</label>
+            <label class="text" for="test_name">Test Name</label>
             <input type="text" class="form-control" id="test_name" name="test_name" required>
         </div>
         <div class="form-group">
-            <label for="category">Category</label>
+            <label class="text" for="category">Category</label>
             <select class="form-control" id="category" name="category" required>
+                <option value="" disabled selected>Select an option</option>
                 {% for category in categories %}
                     <option value="{{ category.id }}">{{ category.name }}</option>
                 {% endfor %}

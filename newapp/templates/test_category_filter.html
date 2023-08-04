@@ -26,20 +26,29 @@
       <option value="{{ categoryy.id }}">{{ categoryy.name }}</option>
     {% endfor %}
   </select>
-  <button type="submit" class="btn btn-primary">Filter</button>
+  <button type="submit" class="btn btn-primary filter">Filter</button>
 </form>
 </section>
 
 
-<section>
-  <h2 id="h2">Chose the test you want to take.</h2>
-  <ul class="list-group">
-    {% for test in selected_tests %}
-      <li class="list-group-item"><a href="{% url 'givetest' test.id %}" class="text-decoration-none text-dark">{{ test.name}}</a></li>
+
+
+<ul class="list-group ">
+    {% for tst in selected_tests %}
+    <p class="d-inline-flex gap-1 ">
+        <button class="btn btn-secondary button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{ tst.id }}" aria-expanded="false" aria-controls="collapseExample{{ tst.id }}">
+            <li class="list-group-item button" text-decoration-none text-dark>{{ tst.name }}</li>
+        </button>
+    </p>
+    <div class="collapse " id="collapseExample{{ tst.id }}">
+        <div class="card card-body button afterclick">
+            <li class="list-group-item"><a href="{% url 'givetest' tst.id %}" class="text-decoration-none text-dark">Start Exam</a></li>
+        </div>
+    </div>
     {% endfor %}
-      <!-- Add more categories here -->
   </ul>
-</section>
+  
+  
 
 
 

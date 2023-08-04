@@ -74,3 +74,37 @@ body {
 #total_questions{
   color :#f4f43d;
 }
+
+.button{
+  background-color: #454d55;
+  color: white;
+  border-color:#454d55 ;
+}
+.btn-primary {
+  --bs-btn-color: #fff;
+  
+  
+  --bs-btn-hover-color: #fff;
+  
+  
+  --bs-btn-focus-shadow-rgb: 49,132,253;
+  --bs-btn-active-color: #fff;
+  
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+
+  
+}
+
+.filter{
+  margin-bottom: 10px;
+}
+
+.afterclick{
+  margin-bottom: 10px;
+  width: 150px;
+}
+
+.text{
+  color: #fff;
+}
