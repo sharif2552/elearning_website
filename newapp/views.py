@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse 
 from .models import test, Question, Category
-
+from django.contrib.auth.decorators import login_required
+# from .decorators import student_required, teacher_required
 # Create your views here.
+@login_required(login_url='login')
+# @student_required
 def home(request):
     category = Category.objects.all()
     test_set = test.objects.all() 
