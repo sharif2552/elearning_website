@@ -9,4 +9,4 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'password1', 'password2', 'user_type')
+        fields = UserCreationForm.Meta.fields + ('username', 'email', 'password1', 'password2', 'user_type')

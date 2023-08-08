@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+  
+<!-- Main content goes here -->
+{% block test %}
+<br>
+
+<div class="col-4">
+<a href="{% url 'newapp:add_test' %}"><button type="button" class="btn btn-danger m-2">  Add Test</button></a>
+
+<a href="{% url 'newapp:add_category' %}"><button type="button" class="btn btn-danger m-2">  Add Category</button></a>
+
+
+<a href="{% url 'newapp:add_question' %}"><button type="button" class="btn btn-danger m-2">  Add questions</button></a>
+
+</div>
+
+{% endblock test %}

@@ -26,6 +26,19 @@ SECRET_KEY = 'django-insecure-ep%h0qw*63b$ejltpi-nb$2s((8i&y1aqh8l797^xf9jh@s_!q
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# settings.py
+
+AUTHENTICATION_BACKENDS = [
+    'accounts.authentication.backends.CustomUserBackend',
+    # Other backends
+]
+
+LOGIN_URL = 'custom_login'
+
+LOGIN_REDIRECT_URL = 'home'  # Replace 'home' with the URL name you want to redirect to
+# settings.py
+LOGOUT_REDIRECT_URL = '/'  # Replace 'home' with the name of the URL pattern you want to redirect to after logout
+AUTH_USER_MODEL = 'accounts.CustomUser' 
 
 
 # Application definition
@@ -42,11 +55,13 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+         'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]

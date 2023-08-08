@@ -5,12 +5,12 @@
   <br>
   
 <div class="col-4">
-  <a href="{% url 'add_test' %}"><button type="button" class="btn btn-danger m-2">  Add Test</button></a>
+  <a href="{% url 'newapp:add_test' %}"><button type="button" class="btn btn-danger m-2">  Add Test</button></a>
 
-  <a href="{% url 'add_category' %}"><button type="button" class="btn btn-danger m-2">  Add Category</button></a>
+  <a href="{% url 'newapp:add_category' %}"><button type="button" class="btn btn-danger m-2">  Add Category</button></a>
 
   
-  <a href="{% url 'add_question' %}"><button type="button" class="btn btn-danger m-2">  Add questions</button></a>
+  <a href="{% url 'newapp:add_question' %}"><button type="button" class="btn btn-danger m-2">  Add questions</button></a>
 
 </div>
 
@@ -19,7 +19,7 @@
 
 
   <section>
-    <form method="POST" action="{% url 'test_category_filter' %}">
+    <form method="POST" action="{% url 'newapp:test_category_filter' %}">
       {% csrf_token %}
       <select name="selected_category" class="form-select" aria-label="Select Category">
         <option value="">All Categories</option>
@@ -42,7 +42,7 @@
     </p>
     <div class="collapse " id="collapseExample{{ tst.id }}">
         <div class="card card-body button afterclick">
-            <li class="list-group-item"><a href="{% url 'givetest' tst.id %}" class="text-decoration-none text-dark">Start Exam</a></li>
+            <li class="list-group-item"><a href="{% url 'newapp:givetest' tst.id %}" class="text-decoration-none text-dark">Start Exam</a></li>
         </div>
     </div>
     {% endfor %}

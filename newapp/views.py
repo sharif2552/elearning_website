@@ -2,21 +2,29 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse 
 from .models import test, Question, Category
 from django.contrib.auth.decorators import login_required
-# from .decorators import student_required, teacher_required
+from .decorators import student_required, teacher_required
 # Create your views here.
-@login_required(login_url='login')
-# @student_required
+@login_required(login_url='/login/')
+
 def home(request):
+    # if request.user.user_type == 'teacher
+    print(request.user.is_authenticated)
     category = Category.objects.all()
     test_set = test.objects.all() 
+    print(request.user.user_type)
+    
 
     context = {
         'category': category,
         'test': test_set
         }
-    return render(request, 'tests.html',context)
+    if request.user.user_type == 'teacher':
+        return render(request, 'teacher.html',context)
+    elif request.user.user_type == 'student':
+        return render(request, 'student.html',context)
 
-
+@login_required(login_url='/login/')
+@student_required
 def givetest(request, category_id):
     category = get_object_or_404(test, id=category_id)
     allquestions = Question.objects.filter(category=category)
@@ -63,6 +71,8 @@ def givetest(request, category_id):
         })
 
     return render(request, 'give_test.html', {'category': category, 'allquestions': allquestions ,'total_questions': total_questions} )
+
+
 
 def add_question(request):
     if request.method == 'POST':
@@ -122,7 +132,7 @@ def test_category_filter(request):
         return render(request, 'test_category_filter.html', {'categories': categories, 'test_set': test_set})
     
 
-
+@login_required(login_url='/login/')
 def add_category(request):
     if request.method == 'POST':
         category = request.POST.get('category')

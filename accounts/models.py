@@ -10,18 +10,18 @@ class CustomUser(AbstractUser):
     ]
     user_type = models.CharField(max_length=10, choices=USER_TYPES)
     
-    # Add related_name attribute to avoid clashes
+   
     groups = models.ManyToManyField(
         'auth.Group',
         verbose_name='groups',
         blank=True,
-        related_name='customuser_set',  # Specify a unique related_name
+        related_name='customuser_set',  
         help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
     )
     user_permissions = models.ManyToManyField(
         'auth.Permission',
         verbose_name='user permissions',
         blank=True,
-        related_name='customuser_set',  # Specify a unique related_name
+        related_name='customuser_set', 
         help_text='Specific permissions for this user.',
     )
