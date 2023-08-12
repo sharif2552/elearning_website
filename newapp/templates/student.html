@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+  
+<!-- Main content goes here -->
+{% block test %}
+<br>
+
+
+<h2 id="h2">Choose the Category you want to give test.</h2>
+
+
+
+<section>
+  <form method="POST" action="{% url 'newapp:test_category_filter' %}">
+    {% csrf_token %}
+    <select name="selected_category" class="form-select" aria-label="Select Category">
+      <option value="">All Categories</option>
+      {% for categoryy in category %}
+        <option value="{{ categoryy.id }}">{{ categoryy.name }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary">Filter</button>
+  </form>
+</section>
+
+
+
+<ul class="list-group ">
+  {% for tst in test %}
+  <p class="d-inline-flex gap-1 ">
+      <button class="btn btn-secondary button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{ tst.id }}" aria-expanded="false" aria-controls="collapseExample{{ tst.id }}">
+          <li class="list-group-item button" text-decoration-none text-dark>{{ tst.name }}</li>
+      </button>
+  </p>
+  <div class="collapse " id="collapseExample{{ tst.id }}">
+      <div class="card card-body button afterclick">
+          <li class="list-group-item"><a href="{% url 'newapp:givetest' tst.id %}" class="text-decoration-none text-dark">Start Exam</a></li>
+      </div>
+  </div>
+  {% endfor %}
+</ul>
+
+
+
+
+
+
+
+{% endblock test %}

@@ -1,19 +1,30 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse 
 from .models import test, Question, Category
-
+from django.contrib.auth.decorators import login_required
+from .decorators import student_required, teacher_required
 # Create your views here.
+@login_required(login_url='/login/')
+
 def home(request):
+    # if request.user.user_type == 'teacher
+    print(request.user.is_authenticated)
     category = Category.objects.all()
     test_set = test.objects.all() 
+    print(request.user.user_type)
+    
 
     context = {
         'category': category,
         'test': test_set
         }
-    return render(request, 'tests.html',context)
+    if request.user.user_type == 'teacher':
+        return render(request, 'teacher.html',context)
+    elif request.user.user_type == 'student':
+        return render(request, 'student.html',context)
 
-
+@login_required(login_url='/login/')
+@student_required
 def givetest(request, category_id):
     category = get_object_or_404(test, id=category_id)
     allquestions = Question.objects.filter(category=category)
@@ -61,6 +72,8 @@ def givetest(request, category_id):
 
     return render(request, 'give_test.html', {'category': category, 'allquestions': allquestions ,'total_questions': total_questions} )
 
+
+
 def add_question(request):
     if request.method == 'POST':
             
@@ -86,9 +99,9 @@ def add_question(request):
   
             # Redirect back to the same page to add another question
             if 'submit' in request.POST:
-                return redirect('/')
+                return redirect('newapp:home')
             elif 'another_question' in request.POST:
-                return redirect('add_question')
+                return redirect('newapp:add_question')
 
     else:
         categories = test.objects.all()
@@ -119,7 +132,7 @@ def test_category_filter(request):
         return render(request, 'test_category_filter.html', {'categories': categories, 'test_set': test_set})
     
 
-
+@login_required(login_url='/login/')
 def add_category(request):
     if request.method == 'POST':
         category = request.POST.get('category')
@@ -130,10 +143,10 @@ def add_category(request):
 
         if 'submit' in request.POST:
             print("yes submit button pressed")
-            return redirect('home')
+            return redirect('newapp:home')
         elif 'another_category' in request.POST:
             print("no submit button pressed")
-            return redirect('add_category')
+            return redirect('newapp:add_category')
     return render(request, 'add_category.html')
         
 def add_test(request):
@@ -153,7 +166,7 @@ def add_test(request):
         new_test.save()
         
         # Redirect to the home page or any other appropriate page
-        return redirect('home')
+        return redirect('newapp:home')
 
     categories = Category.objects.all()
     return render(request, 'add_test.html', {'categories': categories})
