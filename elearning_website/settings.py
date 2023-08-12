@@ -52,6 +52,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'newapp',
     'accounts',
+    'allauth',
+    'allauth.acccount',
+    'allauth.socialaccounts',
+    'allauth.socialaccoutn.providers.google',
 ]
 
 MIDDLEWARE = [

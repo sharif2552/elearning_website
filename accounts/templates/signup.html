@@ -1,10 +1,18 @@
-<!-- registration.html -->
+<!-- Signup Form -->
+<div class="form signup">
+  <div class="form-content">
+      <header>Signup</header>
+      <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
 
-<h2> registraion </h2>
-
-  <h2>Register</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-  </form>
+          
+          <div class="field button-field">
+              <button type="submit">Signup</button>
+          </div>
+      </form>
+      <div class="form-link">
+          <span>Already have an account? <a href="{% url 'accounts:login' %}" class="link login-link">Login</a></span>
+      </div>
+  </div>
+</div>

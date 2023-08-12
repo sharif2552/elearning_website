@@ -10,18 +10,22 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 
+from .forms import RegistrationForm
+
 def registration_view(request):
     if request.method == 'POST':
+        print("yes post request")
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            
+            print("yes valid")
             user = form.save()
-            print(form.cleaned_data)
-            return redirect('/login')  # Redirect to login page after successful registration
+            print(user)
+            return redirect('accounts:login')
     else:
         form = RegistrationForm()
-    
+
     return render(request, 'signup.html', {'form': form})
+
 
 
 def LoginPage(request):

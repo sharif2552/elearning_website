@@ -99,9 +99,9 @@ def add_question(request):
   
             # Redirect back to the same page to add another question
             if 'submit' in request.POST:
-                return redirect('/')
+                return redirect('newapp:home')
             elif 'another_question' in request.POST:
-                return redirect('add_question')
+                return redirect('newapp:add_question')
 
     else:
         categories = test.objects.all()
@@ -143,10 +143,10 @@ def add_category(request):
 
         if 'submit' in request.POST:
             print("yes submit button pressed")
-            return redirect('home')
+            return redirect('newapp:home')
         elif 'another_category' in request.POST:
             print("no submit button pressed")
-            return redirect('add_category')
+            return redirect('newapp:add_category')
     return render(request, 'add_category.html')
         
 def add_test(request):
@@ -166,7 +166,7 @@ def add_test(request):
         new_test.save()
         
         # Redirect to the home page or any other appropriate page
-        return redirect('home')
+        return redirect('newapp:home')
 
     categories = Category.objects.all()
     return render(request, 'add_test.html', {'categories': categories})
